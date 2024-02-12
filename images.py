@@ -10,10 +10,11 @@ Chrome_driver.get("https://bonigarcia.dev/selenium-webdriver-java/loading-images
 
 img_locator= (By.ID,"landscape")
 
-img = waiter.until(
-    EC.element_to_be_clickable(img_locator))
+wait = WebDriverWait(Chrome_driver, 10, 0.1)
+wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#image-container img:nth-child(4)")))
 
 t = Chrome_driver.find_element(By.CSS_SELECTOR,'img[alt="award"]').get_attribute("src")
 print(t)
+
 
 Chrome_driver.quit()
